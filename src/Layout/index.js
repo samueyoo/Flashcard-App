@@ -6,6 +6,7 @@ import { Link, Route, Switch } from "react-router-dom";
 import { listDecks, deleteDeck } from "../utils/api/index";
 import Home from "./Home";
 import Deck from "./Deck";
+import DeckStudy from "./DeckStudy";
 
 function Layout() {
   const [allDecks, setAllDecks] = useState([{ name: "", id: null, cards: []}]);
@@ -48,6 +49,7 @@ function Layout() {
       <Header />
       <div className="container">
         <Switch>
+
           <Route exact path="/">
             <Home allDecks={allDecks} setAllDecks={setAllDecks} handleDeleteDeckBtn={handleDeleteDeckBtn} />
           </Route>
@@ -58,8 +60,12 @@ function Layout() {
             <Link to={"/"}>Back to Home</Link>
           </Route>
 
+          <Route path="/decks/:deckId/study">
+            <DeckStudy />
+          </Route>
+
           <Route path="/decks/:deckId">
-                <Deck allDecks={allDecks} setAllDecks={setAllDecks} handleDeleteDeckBtn={handleDeleteDeckBtn} />
+            <Deck allDecks={allDecks} setAllDecks={setAllDecks} handleDeleteDeckBtn={handleDeleteDeckBtn} />
           </Route>
 
           <Route>
