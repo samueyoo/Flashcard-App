@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { updateCard } from '../utils/api';
 
-function CardEdit({ currentDeck={ cards: [{front: "test", id: ""}] } }) {
+function CardEdit({ currentDeck={ name: "", cards: [{front: "test", id: ""}] } }) {
     const { cards, id } = currentDeck;
     const cardId = useParams().cardId;
     const cardObject = cards.find(card => card.id == cardId);
@@ -28,8 +28,14 @@ function CardEdit({ currentDeck={ cards: [{front: "test", id: ""}] } }) {
     if (cardObject) {
         return (
             <>
-                <p>{cardObject.front}</p>
-                <p>{cardId}</p>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li style={{"--bs-breadcrumb-divider": '/'}} className="breadcrumb-item"><Link to={"/"}>Home</Link></li>
+                    <li style={{"--bs-breadcrumb-divider": '/'}} className="breadcrumb-item"><Link to={`/${currentDeck.name}`}>{currentDeck.name}</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Edit Card</li>
+                </ol>
+            </nav>
+            <h3>Edit Card</h3>
             <form onSubmit={handleEditSubmit}>
                 <label htmlFor="name">
                     Front

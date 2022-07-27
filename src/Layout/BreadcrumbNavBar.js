@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function BreadcrumbNavBar({ currentDeck={name: ""} }) {
     const { name } = currentDeck;
-
+    //Component most likely defunct, keeping for posterity
    return (
     <nav aria-label="breadcrumb">
         <ol className="breadcrumb">

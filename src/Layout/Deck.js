@@ -26,11 +26,16 @@ function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn}) {
 
     console.log("currentDeck:", currentDeck)
 
-    return (
+    if (currentDeck) {return (
         <>
-            <BreadcrumbNavBar currentDeck={currentDeck} />
             <Switch>
                 <Route exact path={routeMatch}>
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li style={{"--bs-breadcrumb-divider": '/'}} className="breadcrumb-item"><Link to={"/"}>Home</Link></li>
+                            <li className="breadcrumb-item active" aria-current="page">{currentDeck.name}</li>
+                        </ol>
+                    </nav>
                     <Cardslist 
                     currentDeck={currentDeck}
                     allDecks={allDecks} 
@@ -38,19 +43,24 @@ function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn}) {
                     handleDeleteDeckBtn={handleDeleteDeckBtn}  
                     />
                 </Route>
+
                 <Route path={`${routeMatch}/edit`}>
                     <DeckEdit currentDeck={currentDeck} />
                 </Route>
+
                 <Route path={`${routeMatch}/cards/new`}>
 
                 </Route>
                 <Route path={`${routeMatch}/cards/:cardId/edit`}>
-                    <p>Editing a Card</p>
                     <CardEdit currentDeck={currentDeck} />
                 </Route>
             </Switch>
         </>
-    )
+    )} else {
+        return (
+            <p>Deck not found</p>
+        )
+    }
 }
 
 export default Deck;
