@@ -3,7 +3,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 
 function CardslistCard({ card={ id: null, front: "", back: "", deckId: null }, handleDeleteCard }) {
     const routeMatch = useRouteMatch().url;
-    const { id, front, back, deckId } = card;
+    const { id, front, back } = card;
 
     return (
         <div className="card">

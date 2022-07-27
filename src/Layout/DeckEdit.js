@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { updateDeck } from '../utils/api/index';
 
 function DeckEdit({ currentDeck={ cards: [], name: "", id: null} }) {
-    const { cards, name, id, description } = currentDeck;
+    const { name, id } = currentDeck;
     const initialFormState = { name: "", description: "" };
     const [formData, setFormData] = useState(initialFormState)
 
