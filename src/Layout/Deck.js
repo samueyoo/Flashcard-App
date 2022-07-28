@@ -4,6 +4,7 @@ import { useParams, useRouteMatch, Switch, Route, Link } from 'react-router-dom'
 import Cardslist from './Cardslist';
 import DeckEdit from './DeckEdit';
 import CardEdit from './CardEdit';
+import NewCard from './NewCard';
 
 function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn}) {
     const deckId = useParams().deckId;
@@ -44,14 +45,14 @@ function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn}) {
                     />
                 </Route>
 
-                <Route path={`${routeMatch}/edit`}>
+                <Route path={`/decks/:deckId/edit`}>
                     <DeckEdit currentDeck={currentDeck} />
                 </Route>
 
-                <Route path={`${routeMatch}/cards/new`}>
-
+                <Route path={`/decks/:deckId/cards/new`}>
+                    <NewCard deckId={currentDeck.id} />
                 </Route>
-                <Route path={`${routeMatch}/cards/:cardId/edit`}>
+                <Route path={`/decks/:deckId/cards/:cardId/edit`}>
                     <CardEdit currentDeck={currentDeck} />
                 </Route>
             </Switch>

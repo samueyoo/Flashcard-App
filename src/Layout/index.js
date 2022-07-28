@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, useHistory } from "react-router-dom";
 
 import { listDecks, deleteDeck } from "../utils/api/index";
 import Home from "./Home";
@@ -10,6 +10,7 @@ import DeckStudy from "./DeckStudy";
 
 function Layout() {
   const [allDecks, setAllDecks] = useState([{ name: "", id: null, cards: []}]);
+  const history = useHistory();
 
   useEffect(() => { //Initial request and rendering of all decks in the API.
       async function getAllDecks() {
@@ -35,11 +36,12 @@ function Layout() {
 
       if (window.confirm("Delete this Deck? You will not be able to recover it.")) {
         deleteRequest(deckId, signal);
+        history.push("/");
       };
 
     return () => {
       console.log("cleanup", deckId);
-      abortController.abort(); //Not sure why AbortController is not working
+      return abortController.abort(); //Not sure why AbortController is not working
     }
   }
 

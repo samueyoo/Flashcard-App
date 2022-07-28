@@ -11,8 +11,8 @@ function DeckBootstrapCard({ deck, handleDeleteDeckBtn }) {
                 <h5 className="card-title">{deck.name}</h5>
                 <p className="card-text">{deck.description}</p>
                 <p>{cardCount} cards</p>
-                <Link to={`/decks/${deck.id}`} className="btn btn-secondary">View</Link>
-                <Link to={`/decks/${deck.id}/study`} className="btn btn-primary">Study</Link>
+                <Link to={`/decks/${deck.id}`} className="btn btn-secondary" style={ {marginRight: 5} }>View</Link>
+                <Link to={`/decks/${deck.id}/study`} className="btn btn-primary" style={ {marginRight: 20} }>Study</Link>
                 <button className="btn btn-danger" onClick={() => handleDeleteDeckBtn(deck.id)} >🗑️</button>
             </div>
         </div>
