@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useRouteMatch, Switch, Route, Link } from 'react-router-dom';
 //import BreadcrumbNavBar from './BreadcrumbNavBar';
 import Cardslist from './Cardslist';
@@ -13,6 +13,10 @@ function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn}) {
 
     const routeMatch = useRouteMatch().url;
     console.log("routeMatch:", routeMatch)
+
+    useEffect(() => {
+        console.log("Deck.js has rendered")
+    }, [])
 
     const currentDeck = allDecks.find(deck => {
         // console.log('=====================')

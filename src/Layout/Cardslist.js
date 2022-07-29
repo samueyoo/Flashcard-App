@@ -29,7 +29,7 @@ function Cardslist({ currentDeck={ cards: [], name: "", id: null}, allDecks, set
             <p>{description}</p>
             <Link to={`${routeMatch}/edit`} className="btn btn-secondary" style={{ marginRight: 5 }}>Edit</Link>
             <Link to={`/decks/${id}/study`} className="btn btn-primary" style={{ marginRight: 5 }}>Study</Link>
-            <button className="btn btn-primary" style={{ marginRight: 5 }}>+ Add cards</button>
+            <Link to={`/decks/${id}/cards/new`} className="btn btn-primary" style={{ marginRight: 5 }}>+ Add cards</Link>
             <button className="btn btn-danger" onClick={() => handleDeleteDeckBtn(id)}>🗑️</button>
             <h2 style={{ marginTop: 30 }}>Cards</h2>
             {cardsFromCurrentDeck}

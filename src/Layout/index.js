@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
-import { Link, Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 
 import { listDecks, deleteDeck } from "../utils/api/index";
 import Home from "./Home";
 import Deck from "./Deck";
 import DeckStudy from "./DeckStudy";
+import NewDeck from "./NewDeck";
 
 function Layout() {
   const [allDecks, setAllDecks] = useState([{ name: "", id: null, cards: []}]);
   const history = useHistory();
 
+  async function getAllDecks() {
+    const decksArray = await listDecks();
+    console.log("getAllDecks Function: decksArray", decksArray);
+    setAllDecks(decksArray)
+  }
+
   useEffect(() => { //Initial request and rendering of all decks in the API.
-      async function getAllDecks() {
-          const decksArray = await listDecks();
-          console.log("getAllDecks Function: decksArray", decksArray);
-          setAllDecks(decksArray)
-      }
       getAllDecks();
   }, [])
 
@@ -57,9 +59,7 @@ function Layout() {
           </Route>
 
           <Route exact path="/decks/new">
-            <p>CREATING NEW DECK; need to implement create deck component here</p>
-            <p>Create Deck</p>
-            <Link to={"/"}>Back to Home</Link>
+            <NewDeck getAllDecks={getAllDecks}/>
           </Route>
 
           <Route path="/decks/:deckId/study">

@@ -6,7 +6,6 @@ function DeckBootstrapCard({ deck, handleDeleteDeckBtn }) {
 
     return (
         <div className="card" id={deck.id}>
-            <p>DeckBootstrapCard.js</p>
             <div className="card-body">
                 <h5 className="card-title">{deck.name}</h5>
                 <p className="card-text">{deck.description}</p>
