@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-import { deleteCard, readDeck } from '../utils/api';
+import { readDeck } from '../utils/api';
 
 import CardStudy from './CardStudy';
 
-function DeckStudy() {
+function DeckStudy({ getAllDecks }) {
     const deckId = useParams().deckId;
     const history = useHistory();
 
@@ -55,7 +55,7 @@ function DeckStudy() {
             <button onClick={() => {console.log("front:", front)}}>Check front State</button>
             <button onClick={() => {console.log("whichCard (index):", whichCard)}}>Check whichCard State</button>
             <button onClick={() => {console.log("cards.length:", deck.cards.length)}}>Check cards.length State</button>
-            <CardStudy deck={deck} front={front} whichCard={whichCard} handleNext={handleNext} handleFlip={handleFlip} />
+            <CardStudy deck={deck} front={front} whichCard={whichCard} handleNext={handleNext} handleFlip={handleFlip} getAllDecks={getAllDecks} />
         </>
     )
 }

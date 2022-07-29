@@ -39,6 +39,12 @@ function NewDeck({ getAllDecks }) {
 
     return (
         <>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li style={{"--bs-breadcrumb-divider": '/'}} className="breadcrumb-item"><Link to={"/"}>Home</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Create Deck</li>
+                </ol>
+            </nav>
             <h1>Create Deck</h1>
             <form onSubmit={handleNewDeckSubmit}>
                 <label>

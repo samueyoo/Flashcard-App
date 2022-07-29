@@ -8,6 +8,7 @@ import Home from "./Home";
 import Deck from "./Deck";
 import DeckStudy from "./DeckStudy";
 import NewDeck from "./NewDeck";
+import BreadcrumbNavBar from "./BreadcrumbNavBar";
 
 function Layout() {
   const [allDecks, setAllDecks] = useState([{ name: "", id: null, cards: []}]);
@@ -52,6 +53,7 @@ function Layout() {
     <>
       <Header />
       <div className="container">
+
         <Switch>
 
           <Route exact path="/">
@@ -63,11 +65,11 @@ function Layout() {
           </Route>
 
           <Route path="/decks/:deckId/study">
-            <DeckStudy />
+            <DeckStudy getAllDecks={getAllDecks} />
           </Route>
 
           <Route path="/decks/:deckId">
-            <Deck allDecks={allDecks} setAllDecks={setAllDecks} handleDeleteDeckBtn={handleDeleteDeckBtn} />
+            <Deck allDecks={allDecks} setAllDecks={setAllDecks} handleDeleteDeckBtn={handleDeleteDeckBtn} getAllDecks={getAllDecks} />
           </Route>
 
           <Route>

@@ -195,7 +195,7 @@ describe("Decks", () => {
     readCard.mockResolvedValue(cardTen);
 
     const history = createMemoryHistory();
-    history.push("/decks/9/cards/10/edit");
+    history.push("/decks/8/cards/10/edit");
     render(
       <Router history={history}>
         <App />

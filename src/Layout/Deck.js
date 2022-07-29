@@ -1,48 +1,57 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useRouteMatch, Switch, Route, Link } from 'react-router-dom';
 //import BreadcrumbNavBar from './BreadcrumbNavBar';
 import Cardslist from './Cardslist';
 import DeckEdit from './DeckEdit';
 import CardEdit from './CardEdit';
 import NewCard from './NewCard';
+import { readDeck } from '../utils/api';
 
-function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn}) {
+function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn, getAllDecks}) {
     const deckId = useParams().deckId;
+    const [currentDeckState, setCurrentDeckState] = useState({});
+
     console.log("deckId Param:", deckId)
     console.log("allDecks State:", allDecks)
 
-    const routeMatch = useRouteMatch().url;
-    console.log("routeMatch:", routeMatch)
+    async function retrieveDeck() {
+        const response = await readDeck(deckId)
+        setCurrentDeckState(response);
+        return response;
+    }
 
     useEffect(() => {
+        retrieveDeck();
         console.log("Deck.js has rendered")
     }, [])
 
-    const currentDeck = allDecks.find(deck => {
-        // console.log('=====================')
-        // console.log("Looking for deck with matching ID...");
-        // console.log("deck.id:", deck.id)
-        // console.log(deckId)
-        // console.log(deck.id == deckId)
-        if (deck.id == deckId) console.log("...Match!:", deck);
-        //console.log('=====================')
-        return deck.id == deckId;
-    });
+    // const currentDeck2 = allDecks.find(deck => {
+    //     // console.log('=====================')
+    //     // console.log("Looking for deck with matching ID...");
+    //     // console.log("deck.id:", deck.id)
+    //     // console.log(deckId)
+    //     // console.log(deck.id == deckId)
+    //     if (deck.id == deckId) console.log("...Match!:", deck);
+    //     //console.log('=====================')
+    //     return deck.id == deckId;
+    // });
 
-    console.log("currentDeck:", currentDeck)
 
-    if (currentDeck) {return (
+
+    console.log("currentDeckState:", currentDeckState)
+
+    if (currentDeckState) {return (
         <>
             <Switch>
-                <Route exact path={routeMatch}>
+                <Route exact path="/decks/:deckId">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
                             <li style={{"--bs-breadcrumb-divider": '/'}} className="breadcrumb-item"><Link to={"/"}>Home</Link></li>
-                            <li className="breadcrumb-item active" aria-current="page">{currentDeck.name}</li>
+                            <li className="breadcrumb-item active" aria-current="page">{currentDeckState.name}</li>
                         </ol>
                     </nav>
                     <Cardslist 
-                    currentDeck={currentDeck}
+                    currentDeckState={currentDeckState}
                     allDecks={allDecks} 
                     setAllDecks={setAllDecks} 
                     handleDeleteDeckBtn={handleDeleteDeckBtn}  
@@ -50,14 +59,14 @@ function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn}) {
                 </Route>
 
                 <Route path={`/decks/:deckId/edit`}>
-                    <DeckEdit currentDeck={currentDeck} />
+                    <DeckEdit currentDeck={currentDeckState} getAllDecks={getAllDecks} />
                 </Route>
 
                 <Route path={`/decks/:deckId/cards/new`}>
-                    <NewCard deckId={currentDeck.id} />
+                    <NewCard />
                 </Route>
                 <Route path={`/decks/:deckId/cards/:cardId/edit`}>
-                    <CardEdit currentDeck={currentDeck} />
+                    <CardEdit currentDeck={currentDeckState} getAllDecks={getAllDecks} />
                 </Route>
             </Switch>
         </>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Link, useRouteMatch, useParams } from 'react-router-dom';
 import NewCard from './NewCard';
 
-function CardStudy({ deck, front, whichCard, handleNext, handleFlip }) {
+function CardStudy({ deck, front, whichCard, handleNext, handleFlip, getAllDecks }) {
     const { cards, id } = deck;
     const currentCard = cards[whichCard]
 
@@ -16,7 +16,7 @@ function CardStudy({ deck, front, whichCard, handleNext, handleFlip }) {
                         <Link to={`/decks/${id}/cards/new`} type="button" className="btn btn-primary">+ Add Cards</Link>
                     </Route>
                     <Route path="/decks/:deckId/cards/new">
-                        <NewCard deckId={id} />
+                        <NewCard deckId={id} getAllDecks={getAllDecks} />
                     </Route>
                 </Switch>
             </>
@@ -24,6 +24,7 @@ function CardStudy({ deck, front, whichCard, handleNext, handleFlip }) {
     } else if (front) {
         return (
             <div className="card">
+                <div className="card-body">Card {whichCard + 1} of {cards.length}</div>
                 <div className="card-body">{currentCard.front}</div>
                 <button type="button" className="btn btn-secondary" onClick={handleFlip}>Flip</button>
             </div>
@@ -31,6 +32,7 @@ function CardStudy({ deck, front, whichCard, handleNext, handleFlip }) {
     } else {
         return (
             <div className="card">
+                <div className="card-body">Card {whichCard + 1} of {cards.length}</div>
                 <div className="card-body">{currentCard.back}</div>
                 <button type="button" className="btn btn-secondary" onClick={handleFlip}>Flip</button>
                 <button type="button" className="btn btn-primary" onClick={handleNext}>Next</button>
