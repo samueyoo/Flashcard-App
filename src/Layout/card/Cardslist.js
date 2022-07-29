@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useParams, useRouteMatch } from 'react-router-dom';
-import { deleteCard, listDecks, readDeck } from '../utils/api';
+import { deleteCard, listDecks, readDeck } from '../../utils/api/index';
 import CardslistCard from './CardslistCard';
-
 function Cardslist({ currentDeckState, allDecks, setAllDecks, handleDeleteDeckBtn  }) {
 
     const [theDeck, setTheDeck] = useState({});

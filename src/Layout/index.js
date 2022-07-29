@@ -5,9 +5,9 @@ import { Route, Switch, useHistory } from "react-router-dom";
 
 import { listDecks, deleteDeck } from "../utils/api/index";
 import Home from "./Home";
-import Deck from "./Deck";
-import DeckStudy from "./DeckStudy";
-import NewDeck from "./NewDeck";
+import Deck from "./deck/Deck";
+import DeckStudy from "./deck/DeckStudy";
+import NewDeck from "./deck/NewDeck";
 import BreadcrumbNavBar from "./BreadcrumbNavBar";
 
 function Layout() {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { readDeck, updateDeck } from '../utils/api/index';
+import { readDeck, updateDeck } from '../../utils/api/index';
 
 function DeckEdit({ currentDeck={ cards: [], name: "", id: null}, getAllDecks }) {
     const { name, id } = currentDeck;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Link, useRouteMatch, useParams } from 'react-router-dom';
-import NewCard from './NewCard';
+import NewCard from '../card/NewCard';
 
 function CardStudy({ deck, front, whichCard, handleNext, handleFlip, getAllDecks }) {
     const { cards, id } = deck;

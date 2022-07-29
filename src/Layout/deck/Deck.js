@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useRouteMatch, Switch, Route, Link } from 'react-router-dom';
 //import BreadcrumbNavBar from './BreadcrumbNavBar';
-import Cardslist from './Cardslist';
+import Cardslist from '../card/Cardslist';
 import DeckEdit from './DeckEdit';
-import CardEdit from './CardEdit';
-import NewCard from './NewCard';
-import { readDeck } from '../utils/api';
+import CardEdit from '../card/CardEdit';
+import NewCard from '../card/NewCard';
+import { readDeck } from '../../utils/api/index';
 
 function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn, getAllDecks}) {
     const deckId = useParams().deckId;

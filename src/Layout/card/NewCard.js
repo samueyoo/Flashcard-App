@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-import { createCard, readDeck } from '../utils/api';
+import { createCard, readDeck } from '../../utils/api/index';
 
 function NewCard({ getAllDecks }) {
     const deckIdParam = useParams().deckId;
