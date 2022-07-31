@@ -51,10 +51,10 @@ function DeckStudy({ getAllDecks }) {
                 </ol>
             </nav>
             <h3>Study: {deck.name}</h3>
-            <button onClick={() => {console.log("deck:", deck)}}>Check deck State</button>
+            {/*<button onClick={() => {console.log("deck:", deck)}}>Check deck State</button>
             <button onClick={() => {console.log("front:", front)}}>Check front State</button>
             <button onClick={() => {console.log("whichCard (index):", whichCard)}}>Check whichCard State</button>
-            <button onClick={() => {console.log("cards.length:", deck.cards.length)}}>Check cards.length State</button>
+            <button onClick={() => {console.log("cards.length:", deck.cards.length)}}>Check cards.length State</button>*/}
             <CardStudy deck={deck} front={front} whichCard={whichCard} handleNext={handleNext} handleFlip={handleFlip} getAllDecks={getAllDecks} />
         </>
     )

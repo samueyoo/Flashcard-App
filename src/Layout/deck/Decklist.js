@@ -9,7 +9,6 @@ function Decklist({ allDecks, handleDeleteDeckBtn }) {
 
     return (
         <>
-            <p>Decklist.js</p>
             <div>{deckCards}</div>
         </>
     )

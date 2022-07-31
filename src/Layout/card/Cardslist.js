@@ -51,7 +51,7 @@ function Cardslist({ currentDeckState, allDecks, setAllDecks, handleDeleteDeckBt
         <>
             <h3>{theDeck.name}</h3>
             <p>{theDeck.description}</p>
-            <button type="button" onClick={handleCheckCurrentDecksCards}>Check currentDeck</button>
+            {/*<button type="button" onClick={handleCheckCurrentDecksCards}>Check currentDeck</button>*/}
             <Link to={`${routeMatch}/edit`} className="btn btn-secondary" style={{ marginRight: 5 }}>Edit</Link>
             <Link to={`/decks/${theDeck.id}/study`} className="btn btn-primary" style={{ marginRight: 5 }}>Study</Link>
             <Link to={`/decks/${theDeck.id}/cards/new`} className="btn btn-primary" style={{ marginRight: 5 }}>+ Add cards</Link>

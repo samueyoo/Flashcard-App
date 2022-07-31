@@ -11,8 +11,8 @@ function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn, getAllDecks}) {
     const deckId = useParams().deckId;
     const [currentDeckState, setCurrentDeckState] = useState({});
 
-    console.log("deckId Param:", deckId)
-    console.log("allDecks State:", allDecks)
+    //console.log("deckId Param:", deckId)
+    //console.log("allDecks State:", allDecks)
 
     async function retrieveDeck() {
         const response = await readDeck(deckId)
@@ -25,20 +25,7 @@ function Deck({ allDecks, setAllDecks, handleDeleteDeckBtn, getAllDecks}) {
         console.log("Deck.js has rendered")
     }, [])
 
-    // const currentDeck2 = allDecks.find(deck => {
-    //     // console.log('=====================')
-    //     // console.log("Looking for deck with matching ID...");
-    //     // console.log("deck.id:", deck.id)
-    //     // console.log(deckId)
-    //     // console.log(deck.id == deckId)
-    //     if (deck.id == deckId) console.log("...Match!:", deck);
-    //     //console.log('=====================')
-    //     return deck.id == deckId;
-    // });
-
-
-
-    console.log("currentDeckState:", currentDeckState)
+    //console.log("currentDeckState:", currentDeckState)
 
     if (currentDeckState) {return (
         <>
