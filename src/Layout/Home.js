@@ -1,12 +1,12 @@
-import React, {  } from 'react';
+import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Decklist from './deck/Decklist';
 
 function Home({ allDecks, setAllDecks, handleDeleteDeckBtn }) {
       
-  const handleCheckStateBtn = () => { //Temp debugging btn to check current state
-    console.log(allDecks);
-}
+//   const handleCheckStateBtn = () => { //Temp debugging btn to check current state
+//     console.log(allDecks);
+// }
 
     return (
         <Switch>
