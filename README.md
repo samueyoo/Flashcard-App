@@ -1,9 +1,9 @@
 # Flashcard-App
 
-Provides an easy to use and lightweight React based flashcard app.
+An easy to use and lightweight React/component based flashcard app created for showcase purposes.
 
-Create, edit, update, and delete flashcards stored in a local API. Flip and study user created flashcards. 
+Create, edit, update, and delete flashcards and their respective decks. Flip and study using user created flashcards. 
 
-Frontend created with React (React + React Router) and Bootstrap. 
+Frontend created with React and Bootstrap. 
 
-Future goals include refactoring to reduce API requests (current form due to requirement of project) and finishing navbar component. 
+Mock backend with JSON Server for demonstrative purposes. 

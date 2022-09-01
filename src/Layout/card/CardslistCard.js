@@ -6,7 +6,7 @@ function CardslistCard({ card={ id: null, front: "", back: "", deckId: null }, h
     const { id, front, back } = card;
 
     return (
-        <div className="card">
+        <div className="card" style={{marginTop: "10px", marginBottom: "10px"}}>
             <div className="card-body">
                 <p>{front}</p>
                 <p>{back}</p>

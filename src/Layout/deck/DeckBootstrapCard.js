@@ -5,7 +5,7 @@ function DeckBootstrapCard({ deck, handleDeleteDeckBtn }) {
     const cardCount = deck.cards.length;
 
     return (
-        <div className="card" id={deck.id}>
+        <div className="card" style={{marginTop: "10px", marginBottom: "10px"}} id={deck.id}>
             <div className="card-body">
                 <h5 className="card-title">{deck.name}</h5>
                 <p className="card-text">{deck.description}</p>
